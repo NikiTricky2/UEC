@@ -2,7 +2,7 @@ from flask import Flask
 from flask import render_template
 
 # Create the application object
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 
 # Render index
 @app.route("/")
