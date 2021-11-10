@@ -1,10 +1,15 @@
 from flask import Flask
+from flask import render_template
 
+# Create the application object
 app = Flask(__name__)
 
+# Render index
 @app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
+@app.route('/<name>')
+def index(name=None):
+    return render_template('index.jinja', name=name)
 
+# Start the server with the 'run()' method
 if __name__ == "__main__":
     app.run()
