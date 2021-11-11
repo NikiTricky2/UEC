@@ -8,6 +8,11 @@ app = Flask(__name__, static_url_path='/static')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
 
+# Set the CRSF key
+import os
+SECRET_KEY = os.urandom(32)
+app.config['SECRET_KEY'] = SECRET_KEY
+
 # Get the database objects
 dbc = dbutil.getDBclasses(db)
 
@@ -22,7 +27,6 @@ if not os.path.isfile("site.db"):
 # Add the routes
 import routing
 routing.addRoutes(app, db, dbc)
-
 
 # Start the server with the 'run()' method
 if __name__ == "__main__":
