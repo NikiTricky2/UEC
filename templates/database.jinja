@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Hello from Flask</title>
+
+        <link href={{ url_for('static', filename='/css/bootstrap.min.css') }} rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        {% include "/ui_elements/navbar.jinja" %}
+        <div class="container-fluid">
+            <h1>Database contents of table User</h1>
+
+            <div>
+                {% for user in data %}
+                    <p><b>Username:</b> {{ user.username }}<br>
+                       <b>Email:</b> {{ user.email }}<br>
+                       <b>Id:</b> {{ user.id }}</p>
+                {% endfor %}
+            </div>
+
+            <p>The current url is {{ url_for(request.endpoint) }}</p>
+        </div>
+    </body>
+</html>
