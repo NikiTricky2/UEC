@@ -6,10 +6,15 @@
         <link href={{ url_for('static', filename='/css/bootstrap.min.css') }} rel='stylesheet' type='text/css'>
     </head>
     <body>
-        {% if name %}
-            <h1>Hello {{ name }}!</h1>
-        {% else %}
-            <h1>Hello, World!</h1>
-        {% endif %}
+        {% include "/ui_elements/navbar.jinja" %}
+        <div class="container-fluid">
+            {% if name %}
+                <h1>Hello {{ name }}!</h1>
+            {% else %}
+                <h1>Hello, World!</h1>
+            {% endif %}
+
+            <p>The current url is {{ url_for(request.endpoint) }}</p>
+        </div>
     </body>
 </html>
